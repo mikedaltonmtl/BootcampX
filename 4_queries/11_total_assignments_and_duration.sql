@@ -18,19 +18,8 @@ Expected Result:
 ...
 (51 rows)
 */
-SELECT assignments.day, SUM(count_of_assignments) AS number_of_assignments
-FROM (
-  SELECT assignments.day, COUNT(assignments.id) AS count_of_assignments
-  FROM assignments
-  GROUP BY assignments.id;
-) AS nb_assignments;
 
-
-
-GROUP BY count_of_assignments
-ORDER BY assignments.day ASC;
-
-
-SELECT day, COUNT(duration), SUM(duration) FROM assignments
+SELECT day, COUNT(duration) AS number_of_assignments, SUM(duration) AS duration
+FROM assignments
 GROUP BY day
 ORDER BY day;
